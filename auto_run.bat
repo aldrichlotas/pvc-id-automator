@@ -5,10 +5,10 @@ echo    PVC ID Automator - One-Click Setup
 echo ==========================================
 echo.
 
-:: 1. Isolate the environment using your exact Windows Python path
+:: 1. Isolate the environment (uses the py launcher, falls back to python on PATH)
 if not exist ".venv\Scripts\activate" (
     echo [1/4] Creating a clean, isolated Python environment...
-    "C:\Users\Aldrich\AppData\Local\Programs\Python\Python310\python.exe" -m venv .venv
+    py -3 -m venv .venv 2>nul || python -m venv .venv
 ) else (
     echo [1/4] Environment already verified.
 )
